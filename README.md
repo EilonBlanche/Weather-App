@@ -33,9 +33,12 @@ A weather and travelling application that allows user to search for places and w
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repo and create a MySql Database named weather_app
    ```sh
    git clone https://github.com/EilonBlanche/Weather-App/
+   ```
+   ```sh
+   CREATE DATABASE weather_app;
    ```
 2. Install Composer Dependencies
    ```sh
