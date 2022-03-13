@@ -38,9 +38,9 @@
             <div class="card">
               <div class="card-body border border-secondary rounded">
                 <div class="card-title">
-                  Upcoming Weather Forecast
+                  <h3>Upcoming Weather Forecast</h3>
                 </div>
-                <table class="table">
+                <table class="table table-responsive">
                   <thead>
                     <th>Date</th>
                     <th>Time</th>
