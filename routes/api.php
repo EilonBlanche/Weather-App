@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/cities', 'CityController@index');
 Route::get('/cities', 'CityController@getAllCities');
+Route::get('/{city}/places/{category}', 'CityController@getCityPlacesByCategory');

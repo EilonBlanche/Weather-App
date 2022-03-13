@@ -9,17 +9,20 @@ export default{
         {
             path : '/',
             name : 'CityList',
-            component : HomeView
+            component : HomeView,
+            props: true
         },
         {
             path : '/city/:cityname',
             name : 'CityDetails',
-            component : CityDetailsView
+            component : CityDetailsView,
+            props: true
         },
         {
             path : '/weather/:cityname',
             name : 'CityWeather',
-            component : CityWeatherView
+            component : CityWeatherView,
+            props: route => ({ cityid: route.query.id })
         }
     ]
 }

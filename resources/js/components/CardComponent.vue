@@ -8,10 +8,10 @@
           <p class="card-text scrollable">{{ cityDescription }}</p>
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
-              <router-link class="btn btn-primary text-light form-control" :to="{ name: 'CityWeather', params: { cityname : cityName }}"> <span class="fa fa-cloud"></span> Weather Forecast</router-link>
+              <router-link class="btn btn-primary text-light form-control" :to="{ name: 'CityWeather', params: { cityname : cityName }}" :id="id"> <span class="fa fa-cloud"></span> Weather Forecast</router-link>
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
-              <router-link class="btn btn-info text-light form-control" :to="{ name: 'CityDetails', params: { cityname : cityName }}"> <span class="fa fa-search"></span> Explore the City</router-link>
+              <router-link class="btn btn-info text-light form-control" :to="{ name: 'CityDetails', params: { cityname : cityName, id : id }}"> <span class="fa fa-search"></span> Explore the City</router-link>
             </div>
           </div>
         </div>
@@ -23,6 +23,7 @@
 export default {
     name : 'CardComponent',
     props : {
+        id : Number,
         cityName : String,
         cityDescription : String,
         lat : String,

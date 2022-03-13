@@ -24,7 +24,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@handsontable/vue": "^11.1.0",
         "font-awesome": "^4.7.0",
         "handsontable": "^11.1.0",
         "vue-router": "^3.5.3"

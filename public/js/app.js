@@ -1944,6 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CardComponent',
   props: {
+    id: Number,
     cityName: String,
     cityDescription: String,
     lat: String,
@@ -1972,6 +1973,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2198,61 +2200,79 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CityDetailsView',
+  props: {
+    id: Number
+  },
   components: {
     HeaderImageComponent: _components_HeaderImageComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     CollapsibleCardComponent: _components_CollapsibleCardComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
-      cities: []
+      placeType: '',
+      places: []
     };
   },
   methods: {
-    getAllCities: function () {
-      var _getAllCities = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    handleChange: function handleChange(e) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var myHeaders, requestOptions, response, data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                _this.placeType = e.target.value;
+
+                if (!(e.target.value !== "")) {
+                  _context.next = 11;
+                  break;
+                }
+
                 myHeaders = new Headers();
                 requestOptions = {
                   method: 'GET',
                   headers: myHeaders
                 };
-                _context.next = 4;
-                return fetch("".concat("http://localhost:8000/api/", "cities"), requestOptions);
+                _context.next = 6;
+                return fetch("".concat("http://localhost:8000/api/").concat(_this.id, "/places/").concat(e.target.value), requestOptions);
 
-              case 4:
+              case 6:
                 response = _context.sent;
-                _context.next = 7;
+                _context.next = 9;
                 return response.json();
 
-              case 7:
-                data = _context.sent;
-                this.cities = data.data;
-
               case 9:
+                data = _context.sent;
+                _this.places = data.data;
+
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
-      }));
-
-      function getAllCities() {
-        return _getAllCities.apply(this, arguments);
-      }
-
-      return getAllCities;
-    }()
-  },
-  created: function created() {
-    this.getAllCities();
+        }, _callee);
+      }))();
+    }
   }
 });
 
@@ -39572,6 +39592,7 @@ var render = function () {
                         name: "CityWeather",
                         params: { cityname: _vm.cityName },
                       },
+                      id: _vm.id,
                     },
                   },
                   [
@@ -39597,7 +39618,7 @@ var render = function () {
                     attrs: {
                       to: {
                         name: "CityDetails",
-                        params: { cityname: _vm.cityName },
+                        params: { cityname: _vm.cityName, id: _vm.id },
                       },
                     },
                   },
@@ -39644,41 +39665,41 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
+    return _c("div", { staticClass: "col-md-12" }, [
       _c("div", { staticClass: "card my-2" }, [
-        _c("div", { staticClass: "card-header", attrs: { id: "headingOne" } }, [
-          _c("h5", { staticClass: "mb-0" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-link",
-                attrs: {
-                  "data-toggle": "collapse",
-                  "data-target": "#collapse-1",
-                  "aria-expanded": "true",
-                  "aria-controls": "collapseOne",
-                },
-              },
-              [
-                _vm._v(
-                  "\n                    Collapsible Group Item #1\n                "
-                ),
-              ]
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(
+              "Some quick example text to build on the card title and make up the bulk of the card's content."
             ),
           ]),
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "collapse show", attrs: { id: "collapse-1" } },
-          [
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.\n            "
-              ),
-            ]),
-          ]
-        ),
+        _c("ul", { staticClass: "list-group list-group-flush" }, [
+          _c("li", { staticClass: "list-group-item" }, [
+            _vm._v("Cras justo odio"),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-group-item" }, [
+            _vm._v("Dapibus ac facilisis in"),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-group-item" }, [
+            _vm._v("Vestibulum at eros"),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+            _vm._v("Card link"),
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+            _vm._v("Another link"),
+          ]),
+        ]),
       ]),
     ])
   },
@@ -39989,16 +40010,55 @@ var render = function () {
           attrs: { cityName: _vm.$route.params.cityname },
         }),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row" },
-          [
-            _c("CollapsibleCardComponent"),
-            _vm._v(" "),
-            _c("CollapsibleCardComponent"),
-          ],
-          1
-        ),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c(
+              "select",
+              {
+                staticClass: "custom-select",
+                on: { change: _vm.handleChange },
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("Choose Type of Place ..."),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10000" } }, [
+                  _vm._v("Arts and Entertainment"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13000" } }, [
+                  _vm._v("Dining and Drinking"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15000" } }, [
+                  _vm._v("Health and Medicine"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16000" } }, [
+                  _vm._v("Landmarks and Outdoors"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18000" } }, [
+                  _vm._v("Sports and Recreation"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19000" } }, [
+                  _vm._v("Travel and Transportation"),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v("\n    " + _vm._s(_vm.id) + "\n    "),
+        _vm.placeType !== ""
+          ? _c(
+              "div",
+              { staticClass: "row" },
+              [_c("CollapsibleCardComponent")],
+              1
+            )
+          : _vm._e(),
       ],
       1
     ),
@@ -40086,6 +40146,7 @@ var render = function () {
         return _c("CardComponent", {
           key: city.id,
           attrs: {
+            id: city.id,
             cityName: city.city_name,
             lat: city.lat,
             long: city.long,
@@ -56045,15 +56106,22 @@ __webpack_require__.r(__webpack_exports__);
   routes: [{
     path: '/',
     name: 'CityList',
-    component: _views_HomeView_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    component: _views_HomeView_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    props: true
   }, {
     path: '/city/:cityname',
     name: 'CityDetails',
-    component: _views_CityDetailsView_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    component: _views_CityDetailsView_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    props: true
   }, {
     path: '/weather/:cityname',
     name: 'CityWeather',
-    component: _views_CityWeatherView_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _views_CityWeatherView_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    props: function props(route) {
+      return {
+        cityid: route.query.id
+      };
+    }
   }]
 });
 
@@ -56371,8 +56439,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\efblanche\Desktop\vue-tutorial\laravel_vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\efblanche\Desktop\vue-tutorial\laravel_vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Eilon\Programs\Weather-App\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Eilon\Programs\Weather-App\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
