@@ -13,11 +13,6 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME =  ?";
-        $db = DB::select($query, ['weather_app']);
-        if (empty($db)) {
-            DB::statement("CREATE DATABASE weather_app");
-        }
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('city_name');
