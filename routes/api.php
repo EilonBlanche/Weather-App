@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/cities', 'CityController@index');
+Route::get('/{city}/weather/{forecast?}', 'CityController@getCityWeatherForecast');
 Route::get('/cities', 'CityController@getAllCities');
-Route::get('/{city}/places/{category}', 'CityController@getCityPlacesByCategory');
+Route::get('/{cityid}/places/{category}', 'CityController@getCityPlacesByCategory');

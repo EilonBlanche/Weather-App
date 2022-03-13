@@ -2,7 +2,6 @@
     <div>
         <p class="h1 mt-3">List of Cities</p>
         <div class="row mx-2">
-                
             <CardComponent v-for="city in cities" :id="city.id" :key="city.id" :cityName="city.city_name" :lat="city.lat" :long="city.long" :cityDescription="city.city_description">
             </CardComponent>
         </div>
@@ -42,23 +41,19 @@ export default {
 </script>
 
 <style>
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #f1f1f1;
 }
 
-/* Handle on hover */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 </style>

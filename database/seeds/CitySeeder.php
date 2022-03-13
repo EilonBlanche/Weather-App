@@ -11,6 +11,11 @@ class CitySeeder extends Seeder
      */
     public function run()
     {
+        $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME =  ?";
+        $db = DB::select($query, ['weather_app']);
+        if (empty($db)) {
+            DB::statement("CREATE DATABASE $userName");
+        }
         DB::table("cities")->insert([
             [
                 "city_name" => "Tokyo",

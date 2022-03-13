@@ -4,7 +4,6 @@
       <img class="card-img-top img-container mx-auto my-auto" :src="parseImageUrl()" alt="Card image cap">
         <div class="card-body">
           <h2 class="card-title">{{ cityName }}</h2>
-          
           <p class="card-text scrollable">{{ cityDescription }}</p>
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-1">
@@ -21,26 +20,22 @@
 
 <script>
 export default {
-    name : 'CardComponent',
-    props : {
-        id : Number,
-        cityName : String,
-        cityDescription : String,
-        lat : String,
-        long : String
-    },
-    data(){
-        return {
-        };
-    },
-    methods: {
-        parseImageUrl : function () {
-          return `${process.env.MIX_API_BASE_IMAGE}${this.cityName}.jpg`;
-        }
-    },
-    created(){
-      // this.showCityInfo();
-    },
+  name : 'CardComponent',
+  props : {
+      id : Number,
+      cityName : String,
+      cityDescription : String,
+      lat : String,
+      long : String
+  },
+  data(){
+      return {};
+  },
+  methods: {
+    parseImageUrl : function () {
+      return `${process.env.MIX_API_BASE_IMAGE}cities/${this.cityName}.jpg`;
+    }
+  }
 }
 </script>
 
